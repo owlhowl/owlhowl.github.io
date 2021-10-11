@@ -1,27 +1,64 @@
-var pointsNumber = 5;           // Number of starting points
-var iterationsPerFrame = 500;   // Something like an animation speed
-var pointsOpacity = 128;         // Drawn points opacity 0-255
-var gridCellSize = 0;          // Grid cell size in pixels, 0 to disable grid
-var snapToGrid = false;          // Corners snap to grid when dragging
+let pointsNumber;        // Number of starting points
+let iterationsPerFrame;  // Something like an animation speed
+let pointsOpacity;       // Drawn points opacity 0-255
+let gridCellSize;        // Grid cell size in pixels, 0 to disable grid
+let snapToGrid;          // Corners snap to grid when dragging
 
-var cornerPoints;
-var drawnPoint;
-var randomPoint;
-var selectedPoint;
-var isMouseDragged;
+let cornerPoints;
+let drawnPoint;
+let randomPoint;
+let selectedPoint;
+let isMouseDragged;
 
 function setup() {
-    var canvas = createCanvas(800, 600);
+    pointsNumber = int(document.getElementById('pointsNumber').value);
+    iterationsPerFrame = int(document.getElementById('iterationsPerFrame').value);
+    pointsOpacity = int(document.getElementById('pointsOpacity').value);
+    let drawGridElement = document.getElementById('drawGrid');
+    let snapToGridElement = document.getElementById('snapToGrid');
+    let gridCellSizeElement = document.getElementById('gridCellSize');
+
+    drawGridElement.onclick = function(){
+        if(drawGridElement.checked){
+            gridCellSizeElement.disabled = false;
+            snapToGridElement.disabled = false;
+        }
+        else{
+            gridCellSizeElement.disabled = true;
+            snapToGridElement.disabled = true;
+        }
+    }
+
+    if(drawGridElement.checked){
+        if(snapToGridElement.checked)
+            snapToGrid = true;
+        else
+            snapToGrid = false;
+        gridCellSize = int(gridCellSizeElement.value);
+    }
+    else{
+        snapToGrid = false;
+        gridCellSize = 0;
+    }
+    document.getElementById('refresh-button').onclick = setup;
+    let clientWidth = document.documentElement.clientWidth;
+    let clientHeight = document.documentElement.clientHeight;
+    let canvas;
+    if (clientWidth >= 1080)
+        canvas = createCanvas(clientWidth/2, clientHeight-10);
+    else 
+        canvas = createCanvas(clientWidth, clientHeight/2);
+
     canvas.parent('sketch-holder')
     background(255);
     drawGrid();
     cornerPoints = new Array(pointsNumber);
-    for (var i = 0; i < cornerPoints.length; i++) {
+    for (let i = 0; i < cornerPoints.length; i++) {
         cornerPoints[i] = createVector();
         cornerPoints[i].x = randomInt(0, width);
         cornerPoints[i].y = randomInt(0, height);
     }
-    var startPoint = cornerPoints[0];
+    let startPoint = cornerPoints[0];
     drawnPoint = createVector();
     drawnPoint.x = startPoint.x;
     drawnPoint.y = startPoint.y;
@@ -119,7 +156,7 @@ function mouseDragged() {
     }
     else {
         selectedPoint.x = mouseX;
-        selectedPoint.y = mouseY;    
+        selectedPoint.y = mouseY;
         background(255);
         drawGrid();
         drawCorners();
@@ -132,4 +169,4 @@ function randomInt(min, max) {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
 }
-  
+

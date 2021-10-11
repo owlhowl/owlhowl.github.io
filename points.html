@@ -4,20 +4,32 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="css/points-style.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="css/points-style.css?v=1.1">
         <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.js"></script>
-        <script src="js/points.js"></script>
         <title>Points p5.js</title>
     </head>
     <body>
-        <div class="sketch" id="sketch-holder">
-            <!-- Our sketch will go here! -->
+        <div class="row align-items-md-start">
+            <div class="col-sm-12 col-md-6" id="sketch-holder">
+                <!-- Our sketch will go here! -->
+            </div>
+            <div class="col-sm-12 col-md-4">
+                <p>You can move the points!</p>
+                <p class="settings-text">Points:</p>
+                <input id="pointsNumber" type="number" step="1" min="3" max="20" value="3"/>
+                <p class="settings-text">Points opacity:</p>
+                <input id="pointsOpacity" type="number" step="1" min="0" max="255" value="128"/>
+                <p class="settings-text">Iterations per frame:</p>
+                <input id="iterationsPerFrame" type="number" step="1" min="1" max="5000" value="500"/>
+                <p class="settings-text">Draw grid: <input id="drawGrid" type="checkbox"/></p>
+                <p class="settings-text">Snap to grid: <input id="snapToGrid" type="checkbox" disabled="true"/></p>
+                <p class="settings-text">Grid cell size:</p>
+                <input id="gridCellSize" type="number" step="1" min="10" max="200" value="50" disabled="true"/>
+                <br>
+                <button id="refresh-button" type="button" class="btn btn-primary">Refresh</button>
+            </div>
         </div>
-        <p>You can move the points!</p>
-        <!-- <div class="settings">
-            <p>1<input class="slider" id="pointsNumber" type="range" step="1" min="0" max="25" value="10" id="price" name="price"/>25</p>
-            <p>1<input class="slider" type="range" step="1" min="0" max="100" value="10" id="price" name="price"/>100</p>
-            <p>1<input class="slider" type="range" step="1" min="0" max="100" value="10" id="price" name="price"/>100</p>
-        </div> -->
+        <script src="js/points.js"></script>
     </body>
 </html>

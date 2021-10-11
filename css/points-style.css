@@ -1,3 +1,13 @@
 body {
     font-family: 'Consolas';
 }
+
+.settings-text {
+    margin: 0px;
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+.btn {
+    margin-top: 14px;
+}
