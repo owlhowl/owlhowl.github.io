@@ -10,24 +10,24 @@
         <title>Points p5.js</title>
     </head>
     <body>
-        <div class="row align-items-md-start">
-            <div class="col-sm-12 col-md-6" id="sketch-holder">
+        <div class="row">
+            <div class="sketch col" id="sketch-holder">
                 <!-- Our sketch will go here! -->
             </div>
-            <div class="col-sm-12 col-md-4">
+            <div class="settings col">
                 <p>You can move the points!</p>
                 <p class="settings-text">Points:</p>
-                <input id="pointsNumber" type="number" step="1" min="3" max="20" value="3"/>
+                <input class="w-50" id="pointsNumber" type="number" step="1" min="3" max="20" value="3"/>
                 <p class="settings-text">Points opacity:</p>
-                <input id="pointsOpacity" type="number" step="1" min="0" max="255" value="128"/>
+                <input class="w-50" id="pointsOpacity" type="number" step="1" min="0" max="255" value="128"/>
                 <p class="settings-text">Iterations per frame:</p>
-                <input id="iterationsPerFrame" type="number" step="1" min="1" max="5000" value="500"/>
+                <input class="w-50" id="iterationsPerFrame" type="number" step="1" min="1" max="5000" value="500"/>
                 <p class="settings-text">Draw grid: <input id="drawGrid" type="checkbox"/></p>
                 <p class="settings-text">Snap to grid: <input id="snapToGrid" type="checkbox" disabled="true"/></p>
                 <p class="settings-text">Grid cell size:</p>
-                <input id="gridCellSize" type="number" step="1" min="10" max="200" value="50" disabled="true"/>
+                <input class="w-50" id="gridCellSize" type="number" step="1" min="10" max="200" value="50" disabled="true"/>
                 <br>
-                <button id="refresh-button" type="button" class="btn btn-primary">Refresh</button>
+                <button id="refresh-button" type="button" class="btn btn-primary w-50">Refresh</button>
             </div>
         </div>
         <script src="js/points.js"></script>

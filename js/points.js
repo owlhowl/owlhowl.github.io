@@ -45,7 +45,7 @@ function setup() {
     let clientHeight = document.documentElement.clientHeight;
     let canvas;
     if (clientWidth >= 1080)
-        canvas = createCanvas(clientWidth/2, clientHeight-10);
+        canvas = createCanvas(clientWidth/2, clientHeight-30);
     else 
         canvas = createCanvas(clientWidth, clientHeight/2);
 
