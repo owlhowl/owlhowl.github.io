@@ -1,4 +1,4 @@
-var pointsNumber = 4;           // Number of starting points
+var pointsNumber = 5;           // Number of starting points
 var iterationsPerFrame = 500;   // Something like an animation speed
 var pointsOpacity = 128;         // Drawn points opacity 0-255
 var gridCellSize = 0;          // Grid cell size in pixels, 0 to disable grid
