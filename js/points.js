@@ -3,10 +3,11 @@ let iterationsPerFrame;  // Something like an animation speed
 let pointsOpacity;       // Drawn points opacity 0-255
 let gridCellSize;        // Grid cell size in pixels, 0 to disable grid
 let snapToGrid;          // Corners snap to grid when dragging
+let ratio;
 
 let cornerPoints;
 let drawnPoint;
-let randomPoint;
+let randomCornerPoint;
 let selectedPoint;
 let isMouseDragged;
 
@@ -17,6 +18,10 @@ function setup() {
     let drawGridElement = document.getElementById('drawGrid');
     let snapToGridElement = document.getElementById('snapToGrid');
     let gridCellSizeElement = document.getElementById('gridCellSize');
+
+    let ratioTop = float(document.getElementById('ratioTop').value);
+    let ratioBottom = float(document.getElementById('ratioBottom').value);
+    ratio = ratioBottom / ratioTop;
 
     drawGridElement.onclick = function(){
         if(drawGridElement.checked){
@@ -72,9 +77,9 @@ function draw() {
     stroke(0, pointsOpacity);
     strokeWeight(1);
     for (var i = 0; i < iterationsPerFrame; i++) { 
-        randomPoint = cornerPoints[randomInt(0, pointsNumber)];
-        drawnPoint.x = (drawnPoint.x + randomPoint.x)/2;
-        drawnPoint.y = (drawnPoint.y + randomPoint.y)/2;
+        randomCornerPoint = cornerPoints[randomInt(0, pointsNumber)];
+        drawnPoint.x = (drawnPoint.x + ratio * randomCornerPoint.x)/(1+ratio);
+        drawnPoint.y = (drawnPoint.y + ratio * randomCornerPoint.y)/(1+ratio);
         point(drawnPoint.x, drawnPoint.y);
     }
 }

@@ -17,7 +17,13 @@
             <div class="settings col">
                 <p>You can move the points!</p>
                 <p class="settings-text">Points:</p>
-                <input class="w-50" id="pointsNumber" type="number" step="1" min="3" max="20" value="3"/>
+                <input class="w-50" id="pointsNumber" type="number" step="1" min="3" max="50" value="3"/>
+                <p class="settings-text">Ratio:</p>
+                <div class="w-50 d-inline-block">
+                    <input style="width: 25%;" id="ratioTop" type="number" step="1" min="1" max="1000" value="1"/>
+                    /
+                    <input style="width: 25%;" id="ratioBottom" type="number" step="1" min="1" max="1000" value="1"/>
+                </div>
                 <p class="settings-text">Points opacity:</p>
                 <input class="w-50" id="pointsOpacity" type="number" step="1" min="0" max="255" value="128"/>
                 <p class="settings-text">Iterations per frame:</p>
